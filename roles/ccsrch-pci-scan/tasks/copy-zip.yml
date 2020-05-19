@@ -1,0 +1,30 @@
+---
+- name: Create folder in tmp dir
+  file:
+    name: ccsrch-pci-scan
+    state: directory
+    mode: '0755'
+
+- name: Copy zip to server
+  copy:
+    src: ccsrch-1.9.zip
+    dest: /tmp/ccsrch-pci-scan/
+
+- name: Install unzip
+  become: true
+  yum:
+    name: unzip
+    state: present
+
+- name: Unarchive zip file
+  unarchive:
+    src: /tmp/ccsrch-pci-scan/ccsrch-1.9.zip
+    dest: /tmp/ccsrch-pci-scan/
+    creates: /tmp/ccsrch-pci-scan/ccsrch-1.9/
+    remote_src: yes
+
+- name: Copy exclusion file to server
+  copy:
+    src: exceptfileunix
+    dest: /tmp/ccsrch-pci-scan/    
+ 

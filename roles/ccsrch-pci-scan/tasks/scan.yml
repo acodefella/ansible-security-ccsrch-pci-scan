@@ -1,0 +1,14 @@
+---
+- name: Set files to be executable
+  become: true
+  file:
+    path: "{{ item }}"
+    mode: +x
+  with_items: "/tmp/ccsrch-pci-scan/ccsrch-1.9/ccsrch-1.9-dist/binaries/linux64/ccsrch"
+  no_log: True
+
+- name: scan the server
+  become: true
+  shell:
+    cmd: ./ccsrch -p -X /tmp/ccsrch-pci-scan/exceptfileunix -T -U -s4 -O /
+    chdir: /tmp/ccsrch-pci-scan/ccsrch-1.9/ccsrch-1.9-dist/binaries/linux64

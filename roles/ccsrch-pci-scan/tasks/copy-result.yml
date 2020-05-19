@@ -1,0 +1,21 @@
+---
+- name: Get files in a folder
+  find:
+    paths: "/tmp/ccsrch-pci-scan/ccsrch-1.9/ccsrch-1.9-dist/binaries/linux64/"
+    patterns: '*.out'
+  register: found_files
+
+- name: Get latest file
+  set_fact:
+    latest_file: "{{ found_files.files | sort(attribute='mtime',reverse=true) | first }}"
+
+- name: Fetch scan results from server
+  fetch:
+    src: "{{ latest_file.path }}"
+    dest: /tmp/
+    flat: yes
+
+- name: remove working directory on server
+  file:
+    name: /tmp/ccsrch-pci-scan/
+    state: absent

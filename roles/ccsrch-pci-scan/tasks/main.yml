@@ -1,0 +1,6 @@
+---
+- name: ccsrch-pci-scan
+  block:
+  - include_tasks: copy-zip.yml
+  - include_tasks: scan.yml
+  - include_tasks: copy-result.yml
