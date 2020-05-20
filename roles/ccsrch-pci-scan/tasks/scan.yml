@@ -12,3 +12,5 @@
   shell:
     cmd: ./ccsrch -p -X /tmp/ccsrch-pci-scan/exceptfileunix -T -U -s4 -O /
     chdir: /tmp/ccsrch-pci-scan/ccsrch-1.9/ccsrch-1.9-dist/binaries/linux64
+  async: 1800
+  poll: 5 
