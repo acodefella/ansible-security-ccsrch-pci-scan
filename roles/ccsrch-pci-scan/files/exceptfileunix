@@ -1,3 +1,4 @@
 /dev
 /sys
 /proc
+/var/log/lastlog
