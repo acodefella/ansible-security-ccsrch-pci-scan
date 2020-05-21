@@ -27,4 +27,6 @@ jobs:
       uses: roles-ansible/check-ansible-centos-latest-action@master
       with:
         targets: "./playbook.yml"
+        group: 'all'
+        hosts: 'localhost'
       
