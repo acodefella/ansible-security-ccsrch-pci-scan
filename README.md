@@ -1,3 +1,5 @@
+![](https://github.com/acodefella/ansible-security-ccsrch-pci-scan/workflows/CI/badge.svg)
+
 # ccsrch-pci-scan
 This Ansible project consists of a playbook, which scan servers for PCI compliance. This works only on 64-bit Linux servers.
 
